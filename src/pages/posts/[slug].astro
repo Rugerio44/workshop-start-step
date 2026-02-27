@@ -1,0 +1,30 @@
+---
+import Layout from '#layouts/layout.astro';
+import Hero from '#components/hero.astro';
+import { getAllPosts } from '#pods/post-collection/post-collection.api.ts';
+import type { Post } from '#pods/post-collection/post-collection.model.ts';
+import MiniBioPod from '#pods/mini-bio/mini-bio.pod.astro';
+import NewsletterPod from '#pods/newsletter/newsletter.pod.astro';
+import PopularPosts from '#pods/popular-posts/popular-posts.astro';
+import PostPod from '#pods/post/post.pod.astro';
+
+export async function getStaticPaths() {
+  const postEntries = await getAllPosts();
+  return postEntries.map((entry: Post) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<Layout title={entry.title}>
+  <Hero url={entry.image.url} slot="hero" />
+  <PostPod postEntry={entry} />
+  <Fragment slot="aside">
+    <MiniBioPod type="card" />
+    <NewsletterPod type="mini" />
+    <PopularPosts />
+  </Fragment>
+</Layout>

@@ -4,6 +4,8 @@ import Hero from '#components/hero.astro';
 import MiniBioPod from '#pods/mini-bio/mini-bio.pod.astro';
 import NewsletterPod from '#pods/newsletter/newsletter.pod.astro';
 import PopularPosts from '#pods/popular-posts/popular-posts.astro';
+import PostCollectionPod from '#pods/post-collection/post-collection.post.astro';
+
 
 const homeContent = {
   hero: {
@@ -23,7 +25,7 @@ const homeContent = {
     </div>
   </Hero>
 
-  <div>Place holder for post preview collection</div>
+  <PostCollectionPod />
 
   <Fragment slot="aside">
     <MiniBioPod type="card" />
