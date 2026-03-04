@@ -1,5 +1,6 @@
 ---
 import type { Post } from '#pods/post-collection/post-collection.model.ts';
+import Header from '#pods/post/components/header.astro';
 
 
 interface Props {
@@ -18,7 +19,13 @@ const postContent = {
 ---
 
 
+
 <section>
+    <Header
+      gobackTexyt={postContent.backButton}
+      publishedText={postContent.published}
+      date={postEntry.date}
+    />
     <div>
         {postEntry.title}
         <time datetime={postEntry.date}>
@@ -29,3 +36,5 @@ const postContent = {
             })}
     </div>
 </section>
+
+  
