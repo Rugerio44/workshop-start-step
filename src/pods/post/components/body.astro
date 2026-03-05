@@ -2,6 +2,7 @@
 import HeartIcon from '#assets/icons/heart.svg';
 import type { Post } from '#pods/post-collection/post-collection.model.ts';
 import MarkdownRenderer from '#components/markdown-renderer.astro';
+import LikeButton from '#pods/post/components/like-button.component.tsx';
 
 
 interface Props {
@@ -17,15 +18,7 @@ const { entry, lickeCount, minRead } = Astro.props;
   <h1 class="text-4xl font-bold">{entry.title}</h1>
   <div class="border-tbase-500/90 mb-2 flex items-center justify-between gap-4">
     <p>{entry.readTime} {minRead}</p>
-    <div class="flex items-center gap-2">
-      <button
-        type="button"
-        class="bg-base-100/90 hover:bg-base-100 flex items-center gap-1 rounded-full px-3 py-1 text-sm"
-      >
-        <HeartIcon class="w-4" />
-      </button>
-      <span>{lickeCount}</span>
-    </div>
+    <LikeButton client:load slug={entry.slug}/>
   </div>
   <MarkdownRenderer content={entry.content} />
   
