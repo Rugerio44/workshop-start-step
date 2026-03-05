@@ -18,7 +18,7 @@ export const LikeButton : React.FC<Props> = ({ slug }) => {
         const newlikes = likes + 1;
         setlikes (newlikes);
         actions.incrementLikes({ slug });
-    }
+    }   
 
     return (
       <div className="item-center flex">
