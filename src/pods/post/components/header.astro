@@ -1,19 +1,19 @@
 ---
-import ArrowLeftIcon from "@assets/icons/arrow-left.svg";
+import ArrowLeftIcon from "#assets/icons/arrow-left.svg";
 
 interface Props {
-  gobackTexyt: string;
+  gobackText: string;
   publishedText: string;
   date: string;
 }
 
-const { gobackTexyt, publishedText, date } = Astro.props;
+const { gobackText, publishedText, date } = Astro.props;
 ---
 
 <header class="flex items-start justify-between gap-5">
     <a href="/" class="hover:text-primary-600">
       <ArrowLeftIcon class="w-5" />
-      {gobackTexyt}
+      {gobackText}
     </a>
     <p>
       {publishedText}{''}

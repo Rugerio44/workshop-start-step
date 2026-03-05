@@ -1,6 +1,7 @@
 ---
 import type { Post } from '#pods/post-collection/post-collection.model.ts';
 import Header from '#pods/post/components/header.astro';
+import Body from './components/body.astro';
 
 
 interface Props {
@@ -12,7 +13,7 @@ const { postEntry } = Astro.props;
 const likeCount = 6;
 
 const postContent = {
-    backButton: 'Atras',
+    backButton: 'Go back',
     published: 'Publicado el',
     minRead: 'min read',
 };
@@ -22,19 +23,11 @@ const postContent = {
 
 <section>
     <Header
-      gobackTexyt={postContent.backButton}
+      gobackText={postContent.backButton}
       publishedText={postContent.published}
       date={postEntry.date}
     />
-    <div>
-        {postEntry.title}
-        <time datetime={postEntry.date}>
-            {postContent.published} {new Date(postEntry.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-    </div>
+    <Body entry={postEntry} />
 </section>
 
   
