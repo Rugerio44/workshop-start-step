@@ -7,7 +7,7 @@ interface Props {
 
 export const LikeButton : React.FC<Props> = ({ slug }) => {
     const [likes, setlikes] = useState<number>(0);
-
+  
     useEffect(() =>{
         actions.getlikes(slug).then(response => {
             setlikes(response?.data?.likes ?? 0);
