@@ -14,7 +14,7 @@ export const LikeButton : React.FC<Props> = ({ slug }) => {
         }).catch(() => {
             setlikes(0);
         });
-    }, [slug]); 
+    }, [slug]);  
 
     const handlelike = () =>{
         const newlikes = likes + 1;
