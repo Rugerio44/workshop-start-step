@@ -9,10 +9,12 @@ export const LikeButton : React.FC<Props> = ({ slug }) => {
     const [likes, setlikes] = useState<number>(0);
   
     useEffect(() =>{
-        actions.getlikes(slug).then(response => {
+        actions.getlikes({ slug }).then(response => {
             setlikes(response?.data?.likes ?? 0);
+        }).catch(() => {
+            setlikes(0);
         });
-    }, []); 
+    }, [slug]); 
 
     const handlelike = () =>{
         const newlikes = likes + 1;
